@@ -13,6 +13,39 @@
             saveBtnClicked = true;
         };
         saveBtn.addEventListener('click', saveForm, false);
+        //    计算总金额的函数
+        var qtyFileds = OrderForm.quantity,
+            totalFields = document.getElementsByClassName('item_total'),
+            orderTotalField = document.getElementById('order_total');
+        //  格式化数字:自动切分千位数。
+        var formatMoney = function (value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        };
+        var calculateTotals = function () {
+            var i = 0,
+                ln = qtyFileds.length,
+                itemQty = 0,
+                itemPrice = 0.00,
+                itemTotoal = 0.00,
+                itemTotalMoney = '$0.00',
+                orderTotal = 0.00,
+                orderTotalMoney = '$0.00';
+            for (; i < ln; i++) {
+                //    后面补充
+            }
+        };
+        calculateTotals();
+        
+        var qtyListeners = function () {
+            var i = 0,
+                ln = qtyFileds.length;
+            for (; i < ln; i++) {
+                qtyFileds[i].addEventListener('input', calculateTotals, false);
+                qtyFileds[i].addEventListener('keyup', calculateTotals, false);
+            }
+        };
+        qtyListeners();
+        
     };
     window.addEventListener('load', init, false);
     
