@@ -98,7 +98,7 @@
     </fieldset>
     <!--表单的订单明细-->
     <fieldset>
-        <legen>Order Details</legen>
+        <legend>Order Details</legend>
         <table>
             <thead>
             <tr>
@@ -165,8 +165,40 @@
             </tr>
             </tfoot>
         </table>
-
     </fieldset>
+    <!--表单的付款明细-->
+    <fieldset>
+        <legend>Payment Details</legend>
+        <ul>
+            <li>
+                <label for="" class="required">
+                    <div>Name On Card</div>
+                    <input type="text" name="card_name" required>
+                </label>
+            </li>
+            <li>
+                <label for="" class="required">
+                    <div>Credit Card No.</div>
+                    <input type="text" name="card_number" pattern="[0-9]{13,16}" maxlength="16" required title="13-16 digits,no spaces">
+                </label>
+            </li>
+            <li>
+                <label for="" class="required">
+                    <div>Expiry Date</div>
+                    <input type="month" name="card_expiry" maxlength="7" placeholder="YYYY-MM" required value="2015-06">
+                </label>
+            </li>
+            <li>
+                <label for="" class="required">
+                    <div>CVV2 No.</div>
+                    <input type="text" name="card cvv2" class="cvv" maxlength="3" pattern="[0-9]{3}" required title="exactly 3 digits">
+                    <span>(Three digits code at back of card)</span>
+                </label>
+            </li>
+
+        </ul>
+    </fieldset>
+
 
     <div class="buttons">
         <input type="submit" value="Submit Order">
