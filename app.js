@@ -26,7 +26,7 @@
                 ln = qtyFileds.length,
                 itemQty = 0,
                 itemPrice = 0.00,
-                itemTotoal = 0.00,
+                itemTotal = 0.00,
                 itemTotalMoney = '$0.00',
                 orderTotal = 0.00,
                 orderTotalMoney = '$0.00';
@@ -38,6 +38,18 @@
                     itemQty = parseFloat(qtyFileds[i].value);
                     console.log('测试失败');
                 }
+                //    根据data-*获取产品价格
+                if (!!qtyFileds[i].dataset) {
+                    itemPrice = parseFloat(qtyFileds[i].dataset.price);
+                    console.log('dataset 包含');
+                } else {
+                    itemPrice = parseFloat(qtyFileds[i].getAtrribute('data-price'));
+                }
+                itemTotal = itemQty * itemPrice;
+                itemTotalMoney = '$' + formatMoney(itemTotal.toFixed(2));
+                orderTotal += itemTotal;
+                orderTotalMoney = '$' + formatMoney(orderTotal.toFixed(2));
+                
             }
         };
         calculateTotals();

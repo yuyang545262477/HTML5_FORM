@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test a backting</title>
+</head>
+<body>
+<form action="" method="post" name="form">
+    <input type="number" name="number">
+</form>
+<button type="button" id="button"> 点击获取数字</button>
+<script>
+    var button = document.getElementById('button');
+    var getNumber = function () {
+        var number = document.forms.form.number.valueAsNumber;
+//        number = number.valueAsNumber;
+//        number = parseFloat(number);
+        console.log(number);
+    };
+    button.addEventListener('click', getNumber, false);
+</script>
+</body>
+</html>
