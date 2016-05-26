@@ -49,6 +49,14 @@
                 itemTotalMoney = '$' + formatMoney(itemTotal.toFixed(2));
                 orderTotal += itemTotal;
                 orderTotalMoney = '$' + formatMoney(orderTotal.toFixed(2));
+                //    输出经过计算之后的表单价格
+                if (!!totalFields[i].value) {
+                    totalFields[i].value = itemTotalMoney;
+                    orderTotalField.value = orderTotalMoney;
+                } else {
+                    totalFields[i].innerHTML = itemTotalMoney;
+                    orderTotalField.innerHTML = orderTotalMoney;
+                }
                 
             }
         };
