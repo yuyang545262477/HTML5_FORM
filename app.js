@@ -72,6 +72,37 @@
         };
         qtyListeners();
         
+        //  自定义验证
+        var doCustomValidity = function (field, msg) {
+            if ('setCustomValidity' in field) {
+                field.setCustomValidity(msg);
+            } else {
+                field.validationMessage = msg;
+            }
+        };
+        var validateForm = function () {
+            //  清空之前的验证信息
+            doCustomValidity(OrderForm.name, '');
+            doCustomValidity(OrderForm.password, '');
+            doCustomValidity(OrderForm.confirm_password, '');
+            doCustomValidity(OrderForm.card_name, '');
+            //    开启自定义验证模式
+            if (OrderForm.name.value.length < 4) {
+                doCustomValidity(OrderForm.name, '全名必须大于4(Ful Name must be at least 4 characters long)');
+            }
+            if (OrderForm.password.value.length < 8) {
+                doCustomValidity(OrderForm.password, '密码长度必须大于8(password must be at least )');
+            }
+            if (OrderForm.confirm_password.value !== OrderForm.password.value) {
+                doCustomValidity(OrderForm.confirm_password, 'Confirm password must match password');
+            }
+            if (OrderForm.card_name.value.length < 4) {
+                doCustomValidity(OrderForm.card_name, 'Name on Card must be at least 4 characters long');
+            }
+        };
+        
+        OrderForm.addEventListener('input', validateForm, false);
+        OrderForm.addEventListener('keyup', validateForm, false);
     };
     window.addEventListener('load', init, false);
     
