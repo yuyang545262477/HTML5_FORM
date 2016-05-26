@@ -31,7 +31,13 @@
                 orderTotal = 0.00,
                 orderTotalMoney = '$0.00';
             for (; i < ln; i++) {
-                //    后面补充
+                if (!!qtyFileds[i].valueAsNumber) {
+                    itemQty = qtyFileds[i].valueAsNumber;
+                    console.log('测试成功');
+                } else {
+                    itemQty = parseFloat(qtyFileds[i].value);
+                    console.log('测试失败');
+                }
             }
         };
         calculateTotals();
