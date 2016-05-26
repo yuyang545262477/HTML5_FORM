@@ -103,6 +103,12 @@
         
         OrderForm.addEventListener('input', validateForm, false);
         OrderForm.addEventListener('keyup', validateForm, false);
+        
+        //    监听表单验证失败
+        var styleInvalidForm = function () {
+            OrderForm.className = 'invalid';
+        };
+        OrderForm.addEventListener('invalid', styleInvalidForm, false);
     };
     window.addEventListener('load', init, false);
     
